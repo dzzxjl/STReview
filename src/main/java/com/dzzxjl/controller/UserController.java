@@ -1,17 +1,14 @@
 package com.dzzxjl.controller;
 
 import com.dzzxjl.pojo.User;
-import com.dzzxjl.service.IUserService;
+import com.dzzxjl.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.nio.cs.US_ASCII;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,8 +17,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    //怎么注入IUserService的？
     @Resource
-    private IUserService userService;
+//    private IUserService userService;
+    private UserServiceImpl userService;
 
     @RequestMapping("/showUser")
     @ResponseBody

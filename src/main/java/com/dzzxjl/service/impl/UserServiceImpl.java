@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by dzzxjl on 2017/7/18.
  */
-@Service("userService")
+@Service
 public class UserServiceImpl implements IUserService {
     @Resource
     private IUserDao userDao;
