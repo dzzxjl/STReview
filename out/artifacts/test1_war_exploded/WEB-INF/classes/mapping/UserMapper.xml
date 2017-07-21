@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dzzxjl.dao.IUserDao" >
+    <!--
+    一般数据库表名使用user_name java中一般使用驼峰制
+    -->
     <resultMap id="BaseResultMap" type="com.dzzxjl.pojo.User" >
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />

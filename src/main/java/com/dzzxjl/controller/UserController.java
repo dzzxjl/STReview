@@ -1,7 +1,7 @@
 package com.dzzxjl.controller;
 
 import com.dzzxjl.pojo.User;
-import com.dzzxjl.service.impl.UserServiceImpl;
+import com.dzzxjl.service.impl.IUserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +17,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    //怎么注入IUserService的？
+    //传入的是IUserService，因此只要是实现了IUserService的都可以
+    /**
+     * UserController并不知道注入的是哪个userServoice
+     */
     @Resource
-//    private IUserService userService;
-    private UserServiceImpl userService;
+    private IUserServiceImpl userService;
 
     @RequestMapping("/showUser")
     @ResponseBody

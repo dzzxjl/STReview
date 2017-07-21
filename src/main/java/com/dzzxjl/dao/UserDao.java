@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by dzzxjl on 2017/7/18.
  */
-public interface IUserDao {
+public interface UserDao {
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
