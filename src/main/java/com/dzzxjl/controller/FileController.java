@@ -19,10 +19,11 @@ public class FileController {
             System.out.println("mark");
             System.out.println(file.getName());
             System.out.println(file.getSize());
-//            System.out.println(file.);
+            System.out.println(file.);
             file.transferTo(new File("classpath:" + file.getOriginalFilename()));
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 }
