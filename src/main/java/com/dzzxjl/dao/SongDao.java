@@ -4,4 +4,5 @@ import com.dzzxjl.pojo.Song;
 
 public interface SongDao {
     int insert(Song song);
+    void delete(Integer id);
 }

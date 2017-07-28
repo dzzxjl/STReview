@@ -1,5 +1,6 @@
 package com.dzzxjl.controller;
 
+import com.dzzxjl.dao.SongDao;
 import com.dzzxjl.pojo.Song;
 import com.dzzxjl.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class SongController {
     @Autowired
     private SongService songService;
 
+    @Autowired
+    private SongDao songDao;
+
     @RequestMapping("addSong")
     @ResponseBody
     public Song addSong(@RequestParam("songName") String songName,
@@ -31,6 +35,11 @@ public class SongController {
         model.addAttribute(song);
         return song;
 //        return "song/song";
+    }
+
+    @RequestMapping("delete")
+    public void delete(Integer id) {
+        this.songDao.delete(id);
     }
 
 }
