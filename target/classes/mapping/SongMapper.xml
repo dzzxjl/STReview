@@ -12,4 +12,8 @@
         values (#{id,jdbcType=INTEGER}, #{songName,jdbcType=VARCHAR}, #{songSinger,jdbcType=VARCHAR},
         #{songAddress,jdbcType=VARCHAR})
     </insert>
+    <delete id="delete">
+        DELETE FROM song
+        WHERE id=#{id}
+    </delete>
 </mapper>

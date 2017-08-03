@@ -21,10 +21,16 @@
   </form>
 
   <a href="./user/showAll">显示所有用户</a>
-
   <form action="/user/deleteUser" method="post">
     <p>id<input type="text" name="id" /></p>
     <input type="submit" value="Submit" />
+  </form>
+
+  使用表单multi属性上传文件测试，后台使用Spring专属类
+  <form action="/uploadfile" method="post" enctype="multipart/form-data">
+    <label>文件上传</label>
+    <input type="file" name="file" accept="">
+    <input type="submit">
   </form>
   </body>
 </html>
