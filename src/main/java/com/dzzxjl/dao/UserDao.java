@@ -21,6 +21,7 @@ public interface UserDao {
 
     int updateByPrimaryKey(User record);
 
-    @Select("select * from user_t")
+//    @Select("select * from user_t")
+//    这种写法表中对应的列与pojo中的属性值无法一一对应，因此名称不一样的属性值将为null
     List<User> getAllUsers();
 }

@@ -1,7 +1,9 @@
 package com.dzzxjl.controller;
 
+import com.dzzxjl.dao.UserDao;
 import com.dzzxjl.pojo.User;
 import com.dzzxjl.service.IUserService;
+import com.dzzxjl.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -61,17 +65,52 @@ public class UserController {
 
 
 
-    @RequestMapping("/showAll")
+    @RequestMapping(value = "/showAll",produces = "application/json;charset=UTF-8")
+    @ResponseBody
     public String showAll(HttpServletRequest request, Model model){
 
         List<User> list = this.userService.getAllUsers();
+        User user = new User();
+        user.setId(9);
+        user.setUserName("脏");
+        user.setAge(11);
+        list.add(user);
         model.addAttribute("list",list);
         System.out.println(list);
-        return "showAll";
+//        System.out.println(list.get(0).getUserName());
+        //此时拿到的Byte[]已经乱码
+        String luanma = list.get(0).getUserName();
+        try {
+            String temp = new String(list.get(1).getUserName().getBytes("GBK"),"UTF-8");
+            System.out.println(Arrays.toString(temp.getBytes()));
+            System.out.println(temp);
+            System.out.println(Arrays.toString(list.get(1).getUserName().getBytes()));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+//        return list;
+        String s = null;
+        try {
+            s = new String("在在".getBytes(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "你好";
     }
 
+    @ResponseBody
     @RequestMapping("/test")
-    public List showAll2(){
-        return this.userService.getAllUsers();
+    public String showAll2(){
+        return "中文";
+    }
+
+
+    public static void main(String[] args) {
+        IUserService userService = new UserServiceImpl();
+        List<User> list = userService.getAllUsers();
+        for (User user : list) {
+            System.out.println(user);
+        }
     }
 }

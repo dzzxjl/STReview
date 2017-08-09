@@ -19,6 +19,9 @@ public interface ArticleDao {
     int updateByPrimaryKey(Article record);
 
     //只获取标题
-    @Select("select title from article")
+    @Select("select * from article")
     List<Article> selectAll();
+
+
+
 }

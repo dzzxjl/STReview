@@ -18,6 +18,7 @@ public class User {
     }
 
     public void setId(Integer id) {
+
         this.id = id;
     }
 
@@ -26,7 +27,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -34,7 +35,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public Integer getAge() {
@@ -45,4 +46,8 @@ public class User {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return "{id:" + id + ", username:" + userName + ", age: " + age + ", password" + password + "}";
+    }
 }
