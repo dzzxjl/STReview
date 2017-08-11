@@ -67,36 +67,11 @@ public class UserController {
 
     @RequestMapping(value = "/showAll",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String showAll(HttpServletRequest request, Model model){
+    public List<User> showAll(HttpServletRequest request, Model model){
 
         List<User> list = this.userService.getAllUsers();
-        User user = new User();
-        user.setId(9);
-        user.setUserName("脏");
-        user.setAge(11);
-        list.add(user);
         model.addAttribute("list",list);
-        System.out.println(list);
-//        System.out.println(list.get(0).getUserName());
-        //此时拿到的Byte[]已经乱码
-        String luanma = list.get(0).getUserName();
-        try {
-            String temp = new String(list.get(1).getUserName().getBytes("GBK"),"UTF-8");
-            System.out.println(Arrays.toString(temp.getBytes()));
-            System.out.println(temp);
-            System.out.println(Arrays.toString(list.get(1).getUserName().getBytes()));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-//        return list;
-        String s = null;
-        try {
-            s = new String("在在".getBytes(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return "你好";
+        return list;
     }
 
     @ResponseBody
