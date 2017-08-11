@@ -13,6 +13,25 @@
 * 后端 Spring+Spring MVC+MyBatis
 * 数据抓取 scrapy
 
+### 数据表设计
+* 文章表
+  * 文章ID
+  * 文章标题
+  * 文章内容
+  * 文章作者
+  * 文章来源(1,2,3)
+  * 文章链接
+* 评论表
+  * 评论ID
+  * 评论内容
+  * 评论人ID
+  * 评论时间
+  * 文章ID 外键
+* 用户表
+  * 用户ID
+  * username
+  * password
+
 ###Debug
 今天修复了两个惊天大BUG，真的是非常666,
 * tomcat+idea控制台显示中文乱码

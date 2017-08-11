@@ -33,6 +33,16 @@ public class ArticleController {
         return "articles";
     }
 
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public Article test() {
+        Article article = null;
+        article = this.articleDao.selectByPrimaryKey(1);
+        return article;
+    }
+
+
     @ResponseBody
     @RequestMapping(value = "/show", produces="text/json;charset=utf-8")
     public List<Article> getAllArticles(Model model) {
