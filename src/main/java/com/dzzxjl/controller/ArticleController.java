@@ -34,35 +34,23 @@ public class ArticleController {
     }
 
 
-    @RequestMapping("/test")
-    @ResponseBody
-    public Article test() {
+    @RequestMapping("/text")
+//    @ResponseBody
+    public String test(String id, Model model) {
+        Integer aid = Integer.parseInt(id);
         Article article = null;
-        article = this.articleDao.selectByPrimaryKey(1);
-        return article;
+        article = this.articleDao.selectByPrimaryKey(aid);
+        model.addAttribute("article", article);
+        return "article/text";
     }
 
 
-    @ResponseBody
-    @RequestMapping(value = "/show", produces="text/json;charset=utf-8")
-    public List<Article> getAllArticles(Model model) {
+//    @ResponseBody
+    @RequestMapping(value = "/index", produces="text/json;charset=utf-8")
+    public String getAllArticles(Model model) {
         List<Article> list = this.articleDao.selectAll();
-//        model.addAttribute("articlelist",list);
-        for (Article article : list) {
-            System.out.println(article.getId());
-        }
-        System.out.println(list);
-//        System.out.println(list.get(1).getContent());
-
-        try {
-            String temp = new String(list.get(1).getContent().getBytes("GBK"),"UTF-8");
-            System.out.println(temp);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-//        Article article = this.articleDao.selectByPrimaryKey(1);
-//        System.out.println(article.getContent());
-        return list;
+        model.addAttribute("articlelist", list);
+        return "article/index";
     }
 
 }
