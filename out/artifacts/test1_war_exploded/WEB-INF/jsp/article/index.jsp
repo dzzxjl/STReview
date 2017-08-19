@@ -21,7 +21,7 @@
     </div>
     <div id="menu">
         <ul>
-            <li class="current_page_item"><a href="./index.html" accesskey="1" title="">主页</a></li>
+            <li class="current_page_item"><a href="${path}/index.html" accesskey="1" title="">主页</a></li>
             <li><a href="article/index" accesskey="2" title="">文章列表</a></li>
             <li><a href="user/index" accesskey="3" title="">用户列表</a></li>
             <li><a href="./about.html" accesskey="4" title="">关于我们</a></li>
