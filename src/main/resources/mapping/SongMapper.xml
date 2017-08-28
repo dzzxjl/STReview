@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dzzxjl.dao.SongDao">
+    <resultMap id="BaseResultMap" type="com.dzzxjl.pojo.Song">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="song_name" property="songName" jdbcType="VARCHAR" />
+        <result column="song_singer" property="songSinger" jdbcType="VARCHAR" />
+        <result column="song_address" property="songAddress" jdbcType="VARCHAR" />
+    </resultMap>
+    <insert id="insert" parameterType="com.dzzxjl.pojo.Song">
+        insert into song (id, song_name, song_singer,song_address)
+        values (#{id,jdbcType=INTEGER}, #{songName,jdbcType=VARCHAR}, #{songSinger,jdbcType=VARCHAR},
+        #{songAddress,jdbcType=VARCHAR})
+    </insert>
+    <delete id="delete">
+        DELETE FROM song
+        WHERE id=#{id}
+    </delete>
+</mapper>
